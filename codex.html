@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Open Codex chat</title>
+</head>
+<body>
+<p><a id="chat" href="#">Open the Codex chat</a></p>
+<script>
+var id = new URLSearchParams(location.search).get('t') || '';
+var link = document.getElementById('chat');
+if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id)) {
+  link.href = 'codex://threads/' + id;
+  location.replace(link.href);
+} else {
+  link.textContent = 'This link has no chat ID.';
+}
+</script>
+</body>
+</html>
